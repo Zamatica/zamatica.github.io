@@ -1,0 +1,61 @@
+
+
+#card-wrapper
+{
+	position: relative;
+	bottom: 15em;
+}
+
+
+.card
+{
+	word-wrap: break-word;
+	font-size: 18px;
+	font-weight: 300;
+	color: #505050;
+
+	border: 1px;
+	border-style: solid;
+	border-color: rgba(200, 200, 200, 0.8);
+	border-radius: 2px;
+
+	margin: auto;
+	background: #FFFFFF;
+}
+
+
+.card .content
+{
+    /* TOP RIGHT BOTTOM LEFT  */
+    padding: 5px 15px;
+}
+
+
+.comfortable
+{
+	width: 79.5%;
+}
+
+
+.full
+{
+	width: 100%;
+}
+
+
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+#index-card
+{
+    height: 25%;
+    width: 75%;
+}
+
+
+#index-card #main
+{
+    overflow: visible;
+    height: 1% !important;
+}
