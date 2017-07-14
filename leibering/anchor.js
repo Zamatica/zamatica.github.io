@@ -20,6 +20,37 @@ $(document).on('click', 'a[href^="#"]', function(event)
 window.setTimeout(offsetAnchor, 0);
 
 
+$(document).ready(function(){
+
+  $('#menuBar').append(`
+
+      <center>
+				<nav>
+					<ul>
+						<li>
+							<a href="index.html">Home</a>
+						</li>
+
+						<li>
+							<a href="index.html#contact">Contact Us</a>
+						</li>
+
+						<li>
+							<a href="product.html#Sustainability">Sustainability</a>
+						</li>
+
+						<li>
+							<a href="product.html#Products">Products</a>
+						</li>
+					</ul>
+				</nav>
+			</center>
+
+`);
+
+})
+
+
 $(function() {
   $('a[href*=#]:not([href=#])').click(function() 
   {

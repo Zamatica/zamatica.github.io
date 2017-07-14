@@ -529,9 +529,8 @@ hr.base {
 
 #product-img
 {
-	background: #154129;
 	position: absolute;
-	z-index: 4;
+	z-index: 1;
 	height: 42%;
 	width: 42%;
 	left: 65%;
