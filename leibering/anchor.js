@@ -20,6 +20,35 @@ $(document).on('click', 'a[href^="#"]', function(event)
 window.setTimeout(offsetAnchor, 0);
 
 
+function map()
+{
+  var left = "40%"
+  var top = "37%"
+
+  if ($(window).width() <= 1750 && $(window).width() > 1600)
+  {
+    $("#map").width($(window).width() / 4.25);
+    $("#map").height($(window).width() / 4.5);
+    $(".centerframe").css("left", "55%");
+    $(".centerframe").css("top", "0%");
+  }
+  else if ($(window).width() <= 1600)
+  {
+     $("#map").width($(window).width() / 4.25);
+     $("#map").height($(window).width() / 4.5);
+     $(".centerframe").css("left", left);
+     $(".centerframe").css("top", top);
+  }
+  else 
+  {
+     $("#map").width($(window).width() / 3.25);
+     $("#map").height($(window).width() / 3.5);
+     $(".centerframe").css("left", "49%");
+     $(".centerframe").css("top", "0%");
+  }
+}
+
+
 $(document).ready(function(){
 
   $('#menuBar').append(`
@@ -48,8 +77,9 @@ $(document).ready(function(){
 
 `);
 
-   $("#map").width($("#wrapper").width() / 2.25);
-   $("#map").height($("#wrapper").width() / 2.5);
+  map();
+
+  window.addEventListener('resize', map);
 
 })
 
