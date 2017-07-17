@@ -48,6 +48,9 @@ $(document).ready(function(){
 
 `);
 
+   $("#map").width($("#wrapper").width() / 2.25);
+   $("#map").height($("#wrapper").width() / 2.5);
+
 })
 
 

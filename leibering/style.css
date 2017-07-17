@@ -357,6 +357,15 @@ h5 {
 	top: 0%;
 }
 
+@media screen and (max-width: 1750px)
+{
+	#content .centerframe
+	{
+		position: static;
+		width: 100%;
+	}
+}
+
 @media screen and (max-width: 1200px)
 {
 	#content .centerframe
