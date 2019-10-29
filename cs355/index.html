@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="../img/favicon/favicon.ico">
+
+    <title>Noah Sweet | Developer</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/freelancer.css" rel="stylesheet">
+
+    <!-- Temporary navbar container fix -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body class="index" id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            Menu <i class="fa fa-bars"></i>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Noah Sweet</a>
+            <div class="collapse navbar-collapse" id="navbarExample">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#turing-machine">Turing Machines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#examples">Examples</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#odd">Odd Places</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container">
+            <!-- <img class="img-fluid" src="img/me.png" alt="" width="256px" height="256px"> -->
+            <div class="intro-text">
+                <span class="name">Turing Complete Systems</span>
+                <hr class="star-light">
+                <span class="skills"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="turing-machine">
+        <div class="container">
+            <div>
+                <h3>What is Turing Complete?</h3>
+                <p>
+                    The textbook definition of a Turing Complete System is any set of rules that can govern the simulation of a Turing Machine. 
+                    This definition is purely abstract since a turing machine requires an infinitely long sequence of instructions. 
+                    <br><br>In a more computational sense, a Turing Complete system is any system that can run a program to output an answer. This definition is loosely tied around
+                    the idea of being able to solve some problems. This allows us to have clearly defined point where an idea becomes a language 
+                    or system that can solve computational problems.
+                </p><br>
+
+                <h3>The Turing Machine</h3>
+                <p>
+                    To be turing complete, the textbook mandates that you must simulate a turing machine.
+                    A turing machine itself is not a complicated task. There are a defined set of rules that govern
+                    the direction, execution, and suspension of the language.
+
+                    <br><br>The machine itself is defined by a read-write <i>head</i>, an infinitely long sequence tape, and
+                    the tape being divided into cells that contain 1 symbol. At any given symbol, the machine is defined at some
+                    <i>state</i> of its <i>finite state machine</i>. Whenever the machine's head encounters a symbol, the machine
+                    performs a lookup into a table that defines all possible states the machine is allowed to be in. For example, if the machine
+                    is in State <i>AA</i> and sees a <i>A</i>, an operation may be to erase the A.
+
+                    <br><br>For the suspension of the machine, the machine must define a list of one or more <i>accept states</i>. These
+                    are states where the machine encounters a stop executing state. These states prevent all execution from continuing onwards. When the machine
+                    enters a <i>accept state</i>, it is seen as the output of the program or it has encountered an error--if the machine's creator
+                    decided it so.
+
+                    <br><br>One interesting concept behind a Turing Machine is its <i>description number</i>. This number represents the entire
+                    machine from a single integer. There is no strict encoding for how this number is generated from the Turing Machine, only
+                    that the machine must be encoded into a single number.
+                </p><br>
+                <p>Early Sources:
+                    <ul>
+                        <li><a href="https://medium.com/@evinsellin/what-exactly-is-turing-completeness-a08cc36b26e2">https://medium.com/@evinsellin/what-exactly-is-turing-completeness-a08cc36b26e2</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Turing_machine">https://en.wikipedia.org/wiki/Turing_machine</a> -- Not Final</li>
+                        <li><a href="https://stackoverflow.com/questions/7284/what-is-turing-complete">https://stackoverflow.com/questions/7284/what-is-turing-complete</a> -- Not Final</li>
+                    </ul>
+                </p>
+
+                <h3>Programming Languages</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="examples">
+        <div class="container">
+            <h2 class="text-center">Examples</h2><br>
+            <h3>Turing Complete Languages</h3>
+            <ul>
+                <li>C</li>
+                <li>C++</li>
+                <li>C++ Templates</li>
+                <li>JavaScript</li>
+            </ul>
+
+            <h3>Turing Incomplete Languages</h3>
+            <ul>
+                <li>Natural Language</li>
+                <li>The C Preprocessor</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="odd">
+        <div class="container">
+            <h2 class="text-center">Odd Places</h2><br>
+            <p>Turing Completeness popups in a few odd places throughtout computer science. 
+                <br><br>The strangest one I have found was in the mov C Compiler (<a href="https://github.com/xoreaxeaxeax/movfuscator">movcc</a>). This complier was invented
+                to prove that the mov instruction on a CPU is turing complete just by itself.
+                <br><br>Perhaps the most famous odd place for a turing complete system to appear, is the C++ Templates. In fact
+                it is so famous, it was dubbed C++ Metaprogramming and has its own bible dedicated to just template programming.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3><a href="duck.jpg" target="_blank">Link</a></h3>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>You made it far.</h3>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Turing</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Noah Sweet 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/tether/tether.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
