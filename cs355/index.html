@@ -13,8 +13,9 @@
     <title>Noah Sweet | Developer</title>
 
     <link rel="stylesheet"
-      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/default.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+      href="../css/highlightjs/default.min.css">
+    <script src="../js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -124,37 +125,72 @@
                 <hr>
 
                 <h3>Programming Languages</h3>
-                <h4>JavaScript</h4>
-                <h4>C</h4>
-                <h4>C++</h4>
-                <h4>C++ Metaprogramming</h4>
                 <p>
+                    The biggest gist of a turing machine boils down to 4 main features: writing, reading, conditions, and looping. Each one of these features
+                    is important in a Turing Machine's ability to read the symbol, lookup its state, commit an action, and move to the next symbol or halt Meeting
+                    these 4 basic conditions are found in many turing complete languages, and a factorial demostrates these conditions with recursive looping.
+                </p>
+                <br><br>
+                <h4>JavaScript</h4>
+                <pre>
+                    <code>
+function factorial(n) {
+    if (n == 0) {
+        return 1;
+    }
+
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(4))
+                    </code>
+                </pre>
+                <h4>C</h4>
                     <pre>
-                        <code class="C++">
-                            template <size_t N>
-                                class Factorial
-                                {
-                                public:
-                                    const static size_t fact = Factorial<N - 1>::fact * N;
-                                };
-                                
-                                template <>
-                                class Factorial<0>
-                                {
-                                public:
-                                    const static size_t fact = 1;
-                                };
-                                
-                                
-                                int main()
-                                {
-                                    cout << Factorial<4>::fact;
-                                
-                                    return 0;
-                                }
+                        <code>
+#include &lt;stdio.h&gt;
+
+int factorial(int n) {
+    if (n == 0) { return 1; }
+    return n * factorial(n - 1);
+}
+
+int main()
+{
+    printf("%d", factorial(4));
+
+    return 0;
+}
                         </code>
                     </pre>
-                </p>
+                <h4>C++/Metaprogramming</h4>
+                    <pre>
+                        <code class="C++">
+#include &lt;iostream&gt;
+
+template <size_t N>
+class Factorial
+{
+public:
+    const static size_t fact = Factorial<N - 1>::fact * N;
+};
+
+template <>
+class Factorial<0>
+{
+public:
+    const static size_t fact = 1;
+};
+
+
+int main()
+{
+    std::cout << Factorial<4>::fact;
+
+    return 0;
+}
+                        </code>
+                    </pre>
             </div>
         </div>
     </section>
