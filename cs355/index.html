@@ -12,6 +12,9 @@
 
     <title>Noah Sweet | Developer</title>
 
+    <link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -118,7 +121,40 @@
                     </ul>
                 </p>
 
+                <hr>
+
                 <h3>Programming Languages</h3>
+                <h4>JavaScript</h4>
+                <h4>C</h4>
+                <h4>C++</h4>
+                <h4>C++ Metaprogramming</h4>
+                <p>
+                    <pre>
+                        <code class="C++">
+                            template <size_t N>
+                                class Factorial
+                                {
+                                public:
+                                    const static size_t fact = Factorial<N - 1>::fact * N;
+                                };
+                                
+                                template <>
+                                class Factorial<0>
+                                {
+                                public:
+                                    const static size_t fact = 1;
+                                };
+                                
+                                
+                                int main()
+                                {
+                                    cout << Factorial<4>::fact;
+                                
+                                    return 0;
+                                }
+                        </code>
+                    </pre>
+                </p>
             </div>
         </div>
     </section>
