@@ -164,6 +164,12 @@ int main()
                         </code>
                     </pre>
                 <h4>C++/Metaprogramming</h4>
+                <p>
+                    Templates have some odd rules about their "Turing Complete"-ness. Sometimes if statements are required
+                    in order to terminate the recursive nature, but others leveraging template specialization is the better path.
+                    It uses the compiler to add a halt or special action in the recursion. In some cases, like the factorial, you
+                    must use specialization to add a halt condition.
+                </p>
                     <pre>
                         <code class="C++">
 #include &lt;iostream&gt;
