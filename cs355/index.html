@@ -122,15 +122,42 @@
                     </ul>
                 </p>
 
+                <br>
                 <hr>
+                <br>
 
-                <h3>Programming Languages</h3>
+                <h2>Programming Languages</h2>
                 <p>
                     The biggest gist of a turing machine boils down to 4 main features: writing, reading, conditions, and looping. Each one of these features
                     is important in a Turing Machine's ability to read the symbol, lookup its state, commit an action, and move to the next symbol or halt Meeting
                     these 4 basic conditions are found in many turing complete languages, and a factorial demostrates these conditions with recursive looping.
                 </p>
-                <br><br>
+
+                <br>
+                <h3>Turing Complete Languages</h3>
+                <ul>
+                    <li>C (GCC)</li>
+                    <li>C (MovCC)</li>
+                    <li>C++</li>
+                    <li>C++ Templates</li>
+                    <li>JavaScript</li>
+                    <li>Magic the Gathering</li>
+                </ul>
+
+                <h3>Turing Incomplete Languages</h3>
+                <ul>
+                    <li>Natural Language</li>
+                    <li>The C Preprocessor</li>
+                </ul>
+
+                <br>
+
+                <p>
+                    The following examples examplify a factorial in each language. Factorial utilizes all aspects
+                    of a language that make it turing complete:  looping, symbol recognition (+, *, -), and haulting. Just because
+                    a language is capable of doing a factorial does not make it turing complete.
+                </p>
+
                 <h4>JavaScript</h4>
                 <pre>
                     <code>
@@ -230,40 +257,92 @@ public:
 };
                         </code>
                     </pre>
+                <p>
+                    This is a further extension of the above SFINAE code to have one serialization call for everything that exist.
+                    This will call serialize on an object if able, otherwise it will send it to a general purpose serializer.
+                    <br>
+                    This uses C++'s decltype and enable_if, although enable_if can be implemented very easily.
+                </p>
+                <div>
+                    <pre>
+                        <code>
+// C++11
+#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+#include &lt;type_traits&gt;
+
+typedef unsigned char byte;
+
+template &lt;typename T&gt;
+class CheckSerialize {
+    typedef char Small;
+    struct Big { char x[2]; };
+public:
+    // Check for serialize
+    template &lt;typename U&gt; static Small test(decltype(&U::serialize));
+    
+    // Check otherwise
+    template &lt;typename U&gt; static Big test(...);
+    
+    // Store Values
+    enum {
+        Yes = (sizeof(test&lt;T&gt;(0)) == sizeof(Small)),
+        No = !Yes
+    };
+};
+
+
+// Foo class with a serialize
+class Foo {
+    int x;
+public:
+    Foo(int x_) : x(x_) {}
+
+    void serialize(std::ostream& os) {
+        os &lt;&lt; "Foo: " &lt;&lt; x;
+        os &lt;&lt; '\n';
+    }
+};
+
+
+class Bar {
+public:
+    int x = -1;
+};
+
+
+// General Purpose serialize
+template &lt;typename T, typename std::enable_if&lt;CheckSerialize&lt;T&gt;::No, T&gt;::type* = nullptr&gt;
+void serialize(std::ostream& os, T& obj)  {
+    byte *c = reinterpret_cast&lt;byte *&gt;(&obj);
+
+    for (int i = 0; i &lt; sizeof(T); ++i) {
+        os &lt;&lt; (int)c[i] &lt;&lt; ", ";
+    }
+    os &lt;&lt; '\n';
+}
+
+template &lt;typename T, typename std::enable_if&lt;CheckSerialize&lt;T&gt;::Yes, T&gt;::type* = nullptr&gt;
+void serialize(std::ostream& os, T& obj)  {
+    obj.serialize(os);
+}
+
+
+int main()
+{
+    Foo f(20);
+    
+    Bar b;
+    
+    serialize(std::cout, f);
+    serialize(std::cout, b);
+
+    return 0;
+}
+                        </code>
+                    </pre>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="success" id="examples">
-        <div class="container">
-            <h2 class="text-center">Examples</h2><br>
-            <h3>Turing Complete Languages</h3>
-            <ul>
-                <li>C</li>
-                <li>C++</li>
-                <li>C++ Templates</li>
-                <li>JavaScript</li>
-            </ul>
-
-            <h3>Turing Incomplete Languages</h3>
-            <ul>
-                <li>Natural Language</li>
-                <li>The C Preprocessor</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="odd">
-        <div class="container">
-            <h2 class="text-center">Odd Places</h2><br>
-            <p>Turing Completeness popups in a few odd places throughtout computer science. 
-                <br><br>The strangest one I have found was in the mov C Compiler (<a href="https://github.com/xoreaxeaxeax/movfuscator">movcc</a>). This complier was invented
-                to prove that the mov instruction on a CPU is turing complete just by itself.
-                <br><br>Perhaps the most famous odd place for a turing complete system to appear, is the C++ Templates. In fact
-                it is so famous, it was dubbed C++ Metaprogramming and has its own bible dedicated to just template programming.
-            </p>
         </div>
     </section>
 
