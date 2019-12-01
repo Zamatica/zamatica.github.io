@@ -200,16 +200,16 @@ int main()
 
                     <pre>
                         <code>
-template<typename T>
+template &lt;typename T&gt;
 class IsClassT {
 private:
     typedef char One;
     typedef struct { char a[2]; } Two;
-    template<typename C> static One test(int C::*);
+    template &lt;typename C&gt; static One test(int C::*);
     // Will be chosen if T is anything except a class.
-    template<typename C> static Two test(...);
+    template &lt;typename C&gt; static Two test(...);
 public:
-    enum { Yes = sizeof(IsClassT<T>::template test<T>(0)) == 1 };
+    enum { Yes = sizeof(IsClassT&lt;T&gt;::template test&lt;T&gt;(0)) == 1 };
     enum { No = !Yes };
 };
                         </code>
