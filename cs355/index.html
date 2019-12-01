@@ -198,17 +198,33 @@ int main()
                         </code>
                     </pre>
 
+                    Here is a SFINAE example in C++ templates. This illustrates a use where you can compute if a type is a class.
+                    This is mostly used for things like Serialization. I can ask an object if it is a class or a primiative, then
+                    send it to the correct serialization function, whether that be a general purpose, class specific, or a primiative
+                    type.
+                    <br><br>
+                    This example is from <a href="http://blog.olivierlanglois.net/index.php/2007/09/01/what_is_the_c_sfinae_principle">Olivir Langlois's Blog</a>
+
                     <pre>
                         <code>
 template &lt;typename T&gt;
 class IsClassT {
 private:
+    // sizeof == 1
     typedef char One;
+
+    // sizeof == 2
     typedef struct { char a[2]; } Two;
+
+    // Class Detection
     template &lt;typename C&gt; static One test(int C::*);
+
     // Will be chosen if T is anything except a class.
+    //   -- since C:: doesn't work on int, float, etc
     template &lt;typename C&gt; static Two test(...);
+
 public:
+    // Saves the evaluation for use later
     enum { Yes = sizeof(IsClassT&lt;T&gt;::template test&lt;T&gt;(0)) == 1 };
     enum { No = !Yes };
 };
