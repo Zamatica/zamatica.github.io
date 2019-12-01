@@ -51,20 +51,7 @@
             Menu <i class="fa fa-bars"></i>
         </button>
         <div class="container">
-            <a class="navbar-brand" href="#page-top">Noah Sweet</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#turing-machine">Turing Machines</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#examples">Examples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#odd">Odd Places</a>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="#page-top">Turing Complete</a>
         </div>
     </nav>
 
@@ -75,7 +62,7 @@
             <div class="intro-text">
                 <span class="name">Turing Complete Systems</span>
                 <hr class="star-light">
-                <span class="skills"></span>
+                <span class="skills">Noah Sweet</span>
             </div>
         </div>
     </header>
@@ -103,7 +90,7 @@
                     the tape being divided into cells that contain 1 symbol. At any given symbol, the machine is defined at some
                     <i>state</i> of its <i>finite state machine</i>. Whenever the machine's head encounters a symbol, the machine
                     performs a lookup into a table that defines all possible states the machine is allowed to be in. For example, if the machine
-                    is in State <i>AA</i> and sees a <i>A</i>, an operation may be to erase the A.
+                    is in State <i>AA</i> and sees an <i>A</i>, an operation may be to erase the A.
 
                     <br><br>For the suspension of the machine, the machine must define a list of one or more <i>accept states</i>. These
                     are states where the machine encounters a stop executing state. These states prevent all execution from continuing onwards. When the machine
@@ -113,12 +100,18 @@
                     <br><br>One interesting concept behind a Turing Machine is its <i>description number</i>. This number represents the entire
                     machine from a single integer. There is no strict encoding for how this number is generated from the Turing Machine, only
                     that the machine must be encoded into a single number.
+
+                    <br><br>For a visual version of a Turing Machine I recommend this video. It uses the length of the rods as symbols and contains
+                    all rules that a Turing Machine needs.<br><br>
+
+                    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/vo8izCKHiF0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
                 </p><br>
                 <p>Early Sources:
                     <ul>
                         <li><a href="https://medium.com/@evinsellin/what-exactly-is-turing-completeness-a08cc36b26e2">https://medium.com/@evinsellin/what-exactly-is-turing-completeness-a08cc36b26e2</a></li>
-                        <li><a href="https://en.wikipedia.org/wiki/Turing_machine">https://en.wikipedia.org/wiki/Turing_machine</a> -- Not Final</li>
-                        <li><a href="https://stackoverflow.com/questions/7284/what-is-turing-complete">https://stackoverflow.com/questions/7284/what-is-turing-complete</a> -- Not Final</li>
+                        <li><a href="http://www.ioccc.org/2001/herrmann1.hint">http://www.ioccc.org/2001/herrmann1.hint</a> -- C Preprocessor</li>
+                        <li><a href="https://stackoverflow.com/questions/7284/what-is-turing-complete">https://stackoverflow.com/questions/7284/what-is-turing-complete</a> -- User Answers with some references</li>
+                        <li><a href="https://en.wikipedia.org/wiki/Turing_machine">https://en.wikipedia.org/wiki/Turing_machine</a> -- Wikipedia</li>
                     </ul>
                 </p>
 
@@ -190,12 +183,52 @@ int main()
 }
                         </code>
                     </pre>
+                <h4>C Preprocessor</h4>
+                <p>
+                    Inspite of its usefulness the C preprocessor is not a turing complete system. The system does not have a way
+                    to detect and move the head in accordance with the dectection. The preprocessor only moves further down the 
+                    macro.
+                </p>
+                    <pre>
+                        <code>
+#define FACT(n) ((n) <= 1 ? 1 : \
+                 (n) == 2 ? 2 : \
+                 (n) == 3 ? 6 : \
+                 (n) == 4 ? 24 : \
+                 (n) == 5 ? 120 : \
+                 (n) == 6 ? 720 : \
+                 (n) == 7 ? 5040 : \
+                 (n) == 8 ? 40320 : \
+                 (n) == 9 ? 362880 : \
+                 (n) == 10 ? 3628800 : \
+                 (n) == 11 ? 39916800 : \
+                 (n) == 12 ? 479001600 : INT_MAX)
+                        </code>
+                    </pre>
+
+                    <p>
+                        Let's say you did try something like the example below, you would get a warning from the compiler. And an 
+                        error from the linker--provided no function matching FACT is found. As an aside, this happens since the preprocessor
+                        runs over the file once, and doesn't come back to paste the FACT token again.
+                    </p>
+
+                    <pre>
+                        <code>
+#define FACT(n) (n * FACT(n - 1))
+// ---------- 
+main.c: In function ‘main’:
+main.c:11:22: warning: implicit declaration of function ‘FACT’ [-Wimplicit-function-declaration]
+    #define FACT(n) (n * FACT(n - 1))
+                        </code>
+                    </pre>
+
                 <h4>C++/Metaprogramming</h4>
                 <p>
                     Templates have some odd rules about their "Turing Complete"-ness. Sometimes if statements are required
                     in order to terminate the recursive nature, but others leveraging template specialization is the better path.
                     It uses the compiler to add a halt or special action in the recursion. In some cases, like the factorial, you
-                    must use specialization to add a halt condition.
+                    must use specialization to add a halt condition. This factorial is built at compile time, saving a bit of run time.
+                    This means that we cannot build a factorial at runtime with user input, a subtle difference in computation vs programming.
                 </p>
                     <pre>
                         <code class="C++">
@@ -205,9 +238,11 @@ template &lt;size_t N&gt;
 class Factorial
 {
 public:
+    // N * N - 1
     const static size_t fact = Factorial&lt;N - 1&gt;::fact * N;
 };
 
+// Template Specialization for when N == 0
 template &lt;&gt;
 class Factorial&lt;0&gt;
 {
@@ -218,7 +253,7 @@ public:
 
 int main()
 {
-    std::cout << Factorial<4>::fact;
+    std::cout &lt;&lt; Factorial&lt;4&gt;::fact;
 
     return 0;
 }
@@ -267,6 +302,8 @@ public:
                     <pre>
                         <code>
 // C++11
+// g++ -std=c++11 -Wall -Wextra -Werror SFINAE.cpp -o main
+
 #include &lt;iostream&gt;
 #include &lt;typeinfo&gt;
 #include &lt;type_traits&gt;
@@ -339,6 +376,9 @@ int main()
 
     return 0;
 }
+// ----------
+Foo: 20
+255, 255, 255, 255, 
                         </code>
                     </pre>
                 </div>

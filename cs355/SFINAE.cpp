@@ -48,7 +48,7 @@ template <typename T, typename std::enable_if<CheckSerialize<T>::No, T>::type* =
 void serialize(std::ostream& os, T& obj)  {
     byte *c = reinterpret_cast<byte *>(&obj);
 
-    for (int i = 0; i < sizeof(T); ++i) {
+    for (unsigned i = 0; i < sizeof(T); ++i) {
         os << (int)c[i] << ", ";
     }
     os << '\n';
