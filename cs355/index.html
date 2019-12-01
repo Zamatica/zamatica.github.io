@@ -174,15 +174,15 @@ int main()
                         <code class="C++">
 #include &lt;iostream&gt;
 
-template <size_t N>
+template &lt;size_t N&gt;
 class Factorial
 {
 public:
-    const static size_t fact = Factorial<N - 1>::fact * N;
+    const static size_t fact = Factorial&lt;N - 1&gt;::fact * N;
 };
 
-template <>
-class Factorial<0>
+template &lt;&gt;
+class Factorial&lt;0&gt;
 {
 public:
     const static size_t fact = 1;
