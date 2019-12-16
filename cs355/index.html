@@ -62,7 +62,7 @@
             <div class="intro-text">
                 <span class="name">Turing Complete Systems</span>
                 <hr class="star-light">
-                <span class="skills">Noah Sweet</span>
+                <span class="skills">Noah Sweet<br><a style="color:white;" href="ProjectProposal_NoahSweet.pdf" target="_blank">Project Proposal</a></span>
             </div>
         </div>
     </header>
@@ -187,7 +187,12 @@ int main()
                 <p>
                     Inspite of its usefulness the C preprocessor is not a turing complete system. The system does not have a way
                     to detect and move the head in accordance with the dectection. The preprocessor only moves further down the 
-                    macro.
+                    macro. This also will not allow for anything over 32-bit unsigned max, where as the other Factorials can be
+                    quickly adapted to use 64-bit, or even 128-bit, support for numbers larger than 479001600 (12!). 
+                    <br><br>
+                    The one saving grace of this implementation, is the compiler optimization can will evaluate this expression at compile
+                    time, given <i>n</i> is a l-value. This can also be used during runtime, but is not ideal to use as this is really just a bunch
+                    of "if...else if" blocks
                 </p>
                     <pre>
                         <code>
@@ -382,6 +387,28 @@ Foo: 20
                         </code>
                     </pre>
                 </div>
+                <h3>Concluding Remarks</h3>
+                <p>
+                    On concluding notes, Turing Completeness is merely used to determine if a system can evaluate some computational data.
+                    The test does not account for the ability to program <i>anything</i>; a typical I/O bound program quickly surpasses
+                    Turing Completeness as the system had to conquer computing anything before input, output, and interrupts can be implemented.
+                    Most Turing Complete systems do not account as far as dynamic input--unless you count the infinitely long tape as dynamic. A Turing 
+                    Complete System is, at the end of the day, a Finite State Machine.
+                </p>
+                <h4>Finite State Machines</h4>
+                <p>
+                    A Finite State Machine (FSM) maintains a current state and an execution table for what to do in the current state. The execution
+                    table determines the next state of the machine based on the current state. To represent these states we use a symbol, denoting the state,
+                    and an arrow to a possible next state. If you wish to read more about FSM, I recommend <a href="https://www.i-programmer.info/babbages-bag/223-finite-state-machines.html">here to start</a><br><br>
+                    <center><img src="FSM.png" ></center>
+                </p>
+                <h4>Credits</h4>
+                <p>
+                    <ul>
+                        <li>Diagrams: <a href="https://www.draw.io/">DrawIO</a></li>
+                        <li>Code: <a href="https://highlightjs.org/">HighlightJS</a></li>
+                    </ul>
+                </p>
             </div>
         </div>
     </section>
@@ -398,7 +425,7 @@ Foo: 20
                         <h3>You made it far.</h3>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Turing</h3>
+                        <h3><a href="https://www.draw.io/">draw.io</a></h3>
                     </div>
                 </div>
             </div>
@@ -407,7 +434,7 @@ Foo: 20
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Noah Sweet 2017
+                        Copyright &copy; Noah Sweet 3000
                     </div>
                 </div>
             </div>
