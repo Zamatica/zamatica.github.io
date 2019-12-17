@@ -87,29 +87,29 @@
                 <p>
                     To be turing complete, the textbook mandates that you must simulate a turing machine.
                     A turing machine itself is not a complicated task. There are a defined set of rules that govern
-                    the direction, execution, and suspension of the language.
+                    the direction, execution, and suspension of the language. (Evin Sellin Medium, Mark Harrison Stackoverflow)
 
                     <br><br>The machine itself is defined by a read-write <i>head</i>, an infinitely long sequence tape, and
                     the tape being divided into cells that contain 1 symbol. At any given symbol, the machine is defined at some
                     <i>state</i> of its <i>finite state machine</i>. Whenever the machine's head encounters a symbol, the machine
                     performs a lookup into a table that defines all possible states the machine is allowed to be in. For example, if the machine
-                    is in State <i>AA</i> and sees an <i>A</i>, an operation may be to erase the A.
+                    is in State <i>AA</i> and sees an <i>A</i>, an operation may be to erase the A. (Evin Sellin Medium)
 
                     <br><br>For the suspension of the machine, the machine must define a list of one or more <i>accept states</i>. These
                     are states where the machine encounters a stop executing state. These states prevent all execution from continuing onwards. When the machine
                     enters a <i>accept state</i>, it is seen as the output of the program or it has encountered an error--if the machine's creator
-                    decided it so.
+                    decided it so. (Evin Sellin Medium)
 
                     <br><br>One interesting concept behind a Turing Machine is its <i>description number</i>. This number represents the entire
                     machine from a single integer. There is no strict encoding for how this number is generated from the Turing Machine, only
-                    that the machine must be encoded into a single number.
+                    that the machine must be encoded into a single number. (Evin Sellin Medium)
 
                     <br><br>For a visual version of a Turing Machine I recommend this video. It uses the length of the rods as symbols and contains
-                    all rules that a Turing Machine needs.<br><br>
+                    all rules that a Turing Machine needs. (Evin Sellin Medium)<br><br>
 
                     <center><iframe width="560" height="315" src="https://www.youtube.com/embed/vo8izCKHiF0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
                 </p><br>
-                <p>Early Sources:
+                <p>Sources:
                     <ul>
                         <li><a href="https://medium.com/@evinsellin/what-exactly-is-turing-completeness-a08cc36b26e2">https://medium.com/@evinsellin/what-exactly-is-turing-completeness-a08cc36b26e2</a></li>
                         <li><a href="http://www.ioccc.org/2001/herrmann1.hint">http://www.ioccc.org/2001/herrmann1.hint</a> -- C Preprocessor</li>
@@ -126,7 +126,7 @@
                 <p>
                     The biggest gist of a turing machine boils down to 4 main features: writing, reading, conditions, and looping. Each one of these features
                     is important in a Turing Machine's ability to read the symbol, lookup its state, commit an action, and move to the next symbol or halt Meeting
-                    these 4 basic conditions are found in many turing complete languages, and a factorial demostrates these conditions with recursive looping.
+                    these 4 basic conditions are found in many turing complete languages, and a factorial demostrates these conditions with recursive looping. (Mark Harrison Stackoverflow)
                 </p>
 
                 <br>
