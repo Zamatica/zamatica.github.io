@@ -43,7 +43,7 @@
     </table>
 
     <script>
-        const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
         const charactersLength = characters.length;
 
         const text_length = 8192 * 4;
@@ -84,14 +84,14 @@
         make();
 
         $('#same').on('click', () => {
-            var msg = right.replace(" ", "") == left ? "Correct!" : "Wrong!";
+            var msg = right.replace(".", "") == left ? "Correct!" : "Wrong!";
 
             alert(msg);
             make();
         });
 
         $('#diff').click(() => {
-            var msg = !(right.replace(" ", "") == left) ? "Correct!" : "Wrong!";
+            var msg = !(right.replace(".", "") == left) ? "Correct!" : "Wrong!";
 
             alert(msg);
             make();
@@ -105,7 +105,7 @@
             if (rand == -1) {
                 rand = Math.floor(Math.random() * 500);
             } else if (rand == 1000) {
-                right = "                  " + right;
+                $('#right').val('..........' + right);
                 rand = 10 + Math.floor(Math.random() * 50);
             }
 
