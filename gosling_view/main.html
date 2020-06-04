@@ -1,0 +1,120 @@
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table td
+        {
+            width: 50%;
+        }
+
+        textarea
+        {
+            width: 100%;
+            height: 875px;
+            resize: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <select id='diff-opt'>
+        <option value="0" selected>Easy</option>
+        <option value="20">Medium</option>
+        <option value="50">Hard</option>
+        <option value="-1">Random</option>
+    </select>
+
+    <button id='same'>Same</button>
+    <button id="diff">Diff</button>
+
+    <table width="100%">
+        <td>
+            <textarea id='left'>
+
+            </textarea>
+        </td>
+        <td>
+            <textarea id='right'>
+                
+            </textarea>
+        </td>
+    </table>
+
+    <script>
+        const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+
+        const text_length = 8192 * 4;
+    
+        function makeid(length) {
+            var result           = '';
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        var same = -1;
+
+        var left = '';
+        var right = '';
+
+        var l = $('#left');
+        var r = $('#right');
+
+        function make() {
+            $('#left').val('');
+            $('#right').val('');
+
+            same = Math.random() > 0.5 ? true : false;
+            left = makeid(text_length);
+
+            if (same) {
+                right = left;
+            } else {
+                right = makeid(text_length);
+            }
+
+            $('#left').val(left);
+            $('#right').val(right);
+        }
+
+        make();
+
+        $('#same').on('click', () => {
+            var msg = left == right ? "Correct!" : "Wrong!";
+
+            alert(msg);
+            make();
+        });
+
+        $('#diff').click(() => {
+            var msg = !(left == right) ? "Correct!" : "Wrong!";
+
+            alert(msg);
+            make();
+        });
+
+        $('#diff-opt').on('change', () => {
+            make();
+            var rand = $('#diff-opt').val();
+            if (rand == -1) {
+                rand = Math.floor(Math.random() * 500);
+            }
+
+            r.scrollTop(rand);
+        });
+
+        r.scrollTop($('#diff-opt').val());
+
+        setInterval(() => {
+            l.scrollTop(l[0].scrollTop + 1);
+            r.scrollTop(r[0].scrollTop + 1);
+        }, 100);
+
+    </script>
+</body>
+
+
+
