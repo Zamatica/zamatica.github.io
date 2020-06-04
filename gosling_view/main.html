@@ -105,8 +105,8 @@
             if (rand == -1) {
                 rand = Math.floor(Math.random() * 500);
             } else if (rand == 1000) {
-                right = "     " + right;
-                rand = Math.floor(Math.random() * 50);
+                right = "                  " + right;
+                rand = 10 + Math.floor(Math.random() * 50);
             }
 
             r.scrollTop(rand);
