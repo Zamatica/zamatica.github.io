@@ -22,6 +22,7 @@
         <option value="0" selected>Easy</option>
         <option value="20">Medium</option>
         <option value="50">Hard</option>
+        <option value="1000">Impossible</option>
         <option value="-1">Random</option>
     </select>
 
@@ -83,14 +84,14 @@
         make();
 
         $('#same').on('click', () => {
-            var msg = left == right ? "Correct!" : "Wrong!";
+            var msg = right.replace(" ", "") == left ? "Correct!" : "Wrong!";
 
             alert(msg);
             make();
         });
 
         $('#diff').click(() => {
-            var msg = !(left == right) ? "Correct!" : "Wrong!";
+            var msg = !(right.replace(" ", "") == left) ? "Correct!" : "Wrong!";
 
             alert(msg);
             make();
@@ -98,9 +99,14 @@
 
         $('#diff-opt').on('change', () => {
             make();
+
             var rand = $('#diff-opt').val();
+
             if (rand == -1) {
                 rand = Math.floor(Math.random() * 500);
+            } else if (rand == 1000) {
+                right = "     " + right;
+                rand = Math.floor(Math.random() * 50);
             }
 
             r.scrollTop(rand);
