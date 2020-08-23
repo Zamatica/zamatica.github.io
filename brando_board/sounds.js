@@ -23,7 +23,6 @@ class Button {
 class Sound {
     constructor(name, file) {
         this.sound = new Audio(file);
-        this.name = name;
 
         this.button = new Button(() => {
             this.play();
