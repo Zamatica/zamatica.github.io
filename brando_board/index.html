@@ -16,6 +16,10 @@
         .table tr td {
             min-width: 200px;
         }
+
+        .btn {
+            min-width: 100%;
+        }
     </style>
 </head>
 
@@ -67,7 +71,7 @@
             }
         ];
         
-        var board = new SoundBoard(SoundFiles, "#brando");
+        var board = new SoundBoard(SoundFiles, "#brando", { ColumnCount: 3 });
 
         board.renderBoard();
     </script>
