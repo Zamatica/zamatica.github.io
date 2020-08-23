@@ -23,7 +23,7 @@
             <thead>
                 <tr><h1>Brando Board</h1></tr>
             </thead>
-            <tbody id="sounds">
+            <tbody id="brando">
     
             </tbody>
         </table>
@@ -75,8 +75,8 @@
         }
 
 
-        function renderBoard() {
-            var table = $("#sounds")
+        function renderBoard(id) {
+            var table = $(id)
             var soundRow = $(document.createElement('tr'));
 
             SoundFiles.forEach((file, index) => {
@@ -95,7 +95,7 @@
             });
         }
 
-        renderBoard();
+        renderBoard("#brando");
     </script>
 </body>
 
