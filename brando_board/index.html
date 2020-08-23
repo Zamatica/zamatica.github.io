@@ -9,13 +9,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 
     <title>Brando Board</title>
+
+    <style>
+        .table tr td {
+            min-width: 200px;
+        }
+    </style>
 </head>
 
 <body>
     <div style="width:600px;margin: 50px;">
         <table class='table table-striped'>
             <thead>
-                <tr><td><h1>Brando Board</h1></td></tr>
+                <tr><h1>Brando Board</h1></tr>
             </thead>
             <tbody id="sounds">
     
@@ -32,11 +38,14 @@
             "sounds/ahhhh.mp3",
             "sounds/lets-go.mp3",
             "sounds/how-og.mp3",
+
             "sounds/sweat-sweat.mp3",
             "sounds/sweaty-mofo.mp3",
             "sounds/cock-level.mp3",
             "sounds/goddamn.mp3",
         ];
+
+        const ColumnCount = 4;
 
         function loadSound(file) {
             sounds[file] = new Audio(file);
@@ -69,15 +78,23 @@
 
         function renderBoard() {
             var table = $("#sounds")
-            SoundFiles.forEach((file) => {
+            var soundRow = $(document.createElement('tr'));
+
+            SoundFiles.forEach((file, index) => {
                 loadSound(file);
 
-                var soundRow = $(document.createElement('tr'));
                 var data = $(document.createElement('td'));
                 data.append(buildButton(file));
 
                 soundRow.append(data);
-                table.append(soundRow);
+                if ((index + 1) % ColumnCount == 0) {
+                    table.append(soundRow);
+                    soundRow = $(document.createElement('tr'));
+                }
+
+                if ((SoundFiles.length - index) % ColumnCount != 0) {
+                    table.append(soundRow);
+                }
             });
         }
 
