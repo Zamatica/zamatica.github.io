@@ -8,6 +8,8 @@
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 
+    <script src='sounds.js'></script>
+
     <title>Brando Board</title>
 
     <style>
@@ -30,73 +32,44 @@
     </div>
 
     <script>
-        var sounds = {};
-
         const SoundFiles = [
-            "sounds/bull.mp3",
-            "sounds/ahhhh.mp3",
-            "sounds/lets-go.mp3",
-            "sounds/how-og.mp3",
-
-            "sounds/sweat-sweat.mp3",
-            "sounds/sweaty-mofo.mp3",
-            "sounds/cock-level.mp3",
-            "sounds/goddamn.mp3",
-        ];
-
-        const ColumnCount = 4;
-
-        function loadSound(file) {
-            sounds[file] = new Audio(file);
-        }
-
-
-        function playSound(sound) {
-            sounds[sound].play();
-        }
-
-
-        function buildButton(sound) {
-            function extractName(file) {
-                return file.substring(file.lastIndexOf("s/") + 2, file.lastIndexOf('.mp3'))
+            {
+                title: "Bull",
+                file: "sounds/bull.mp3"
+            },
+            {
+                title: "AAahahAA",
+                file: "sounds/ahhhh.mp3"
+            },
+            {
+                title: "Let's Go Bitches",
+                file: "sounds/lets-go.mp3"
+            },
+            {
+                title: "How Original",
+                file: "sounds/how-og.mp3"
+            },
+            {
+                title: "Sweat Sweat?",
+                file: "sounds/sweat-sweat.mp3"
+            },
+            {
+                title: "8==Level",
+                file: "sounds/cock-level.mp3"
+            },
+            {
+                title: "Sweaty Motherfucker",
+                file: "sounds/sweaty-mofo.mp3"
+            },
+            {
+                title: "Goddamn it Man",
+                file: "sounds/goddamn.mp3"
             }
+        ];
+        
+        var board = new SoundBoard(SoundFiles, "#brando");
 
-            var soundButton = $(document.createElement("button"));
-
-            soundButton.addClass('btn btn-primary');
-
-            soundButton.text(extractName(sound));
-
-            soundButton.on('click', () => {
-                playSound(sound);
-            });
-
-            return soundButton;
-        }
-
-
-        function renderBoard(id) {
-            var table = $(id)
-            var soundRow = $(document.createElement('tr'));
-
-            SoundFiles.forEach((file, index) => {
-                loadSound(file);
-
-                var data = $(document.createElement('td'));
-                data.append(buildButton(file));
-
-                soundRow.append(data);
-                if ((index + 1) % ColumnCount == 0) {
-                    table.append(soundRow);
-                    soundRow = $(document.createElement('tr'));
-                } else if ((SoundFiles.length - index) % ColumnCount != 0) {
-                    table.append(soundRow);
-                }
-            });
-        }
-
-        renderBoard("#brando");
+        board.renderBoard();
     </script>
 </body>
-
 
