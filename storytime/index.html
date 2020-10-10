@@ -14,6 +14,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <script src='words.js'></script>
+    <script src='../js/easytimer.min.js'></script>
     <style>
         #wrapper {
             position: relative;
@@ -30,16 +31,22 @@
 </head>
 <body>
     <div id='wrapper'>
+        <h1>Story Time</h1><p>Create a story using each word.</p>
         <span>
             <input type='range' min='3' max='10' value='6' id='word-count'>
             <span id='word-count-view'>6</span>
-        </span><br>
+        </span>
+        <span style="padding: 15px;">
+            Timer
+            <input type='number' min='0' max='5' value='3'>
+            <input type='number' min='0' max='60' value='0'>
+        </span>
+        <br><br><br>
         <button class='btn btn-primary' onclick='loadWords()'>Generate</button>
         <div id="story-words">
-            <p>Press Generate!</p>
         </div>
     </div>
-
+    <!-- Timer (when to start), People Turns -->
     <script>
         $("#word-count").on('change', function() {
             $("#word-count-view").text($('#word-count').val());
@@ -50,8 +57,6 @@
         }
 
         function render(words, verb) {
-            $("#story-words").children().empty();
-
             var string = "";
 
             words.forEach((word, index) => {
@@ -62,8 +67,7 @@
                 }
             });
 
-            $("#story-words").append("<p><b>Nouns:</b> " + string + "</p>");
-            $("#story-words").append("<p><b>Action</b>: " + verb + "</p>");
+            $("#story-words").html("<p><b>Nouns:</b> " + string + "</p>" + "<p><b>Action</b>: " + verb + "</p>");
         }
 
         function loadWords() {
@@ -83,6 +87,7 @@
 
             render(words, verb);
         }
+        loadWords();
     </script>
 </body>
 

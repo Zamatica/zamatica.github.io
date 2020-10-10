@@ -223,7 +223,7 @@ const NOUNS = ["accelerator", "accordion", "account", "accountant", "acknowledgm
     "zebra", "zephyr", "zinc", "zipper", "zone", "zoo", "zoology"
 ];
 
-var VERBS = ["accept", "add", "admire", "admit", "advise", "afford", "agree", "alert", "allow", "amuse", "analyse",
+const VERBS = ["accept", "add", "admire", "admit", "advise", "afford", "agree", "alert", "allow", "amuse", "analyse",
     "announce", "annoy", "answer", "apologise", "appear", "applaud", "appreciate", "approve", "argue", "arrange",
     "arrest", "arrive", "ask", "attach", "attack", "attempt", "attend", "attract", "avoid", "back", "bake",
     "balance", "ban", "bang", "bare", "bat", "bathe", "battle", "beam", "beg", "behave", "belong", "bleach",
